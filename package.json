@@ -1,0 +1,41 @@
+{
+  "author": "MW",
+  "name": "PTP",
+  "version": "0.1.0",
+  "description": "a platform game",
+  "main": "index-nw.html",
+  "node-main": "app.js",
+  "node-remote": "<local>",
+  "dependencies": {
+    "atob": "*"
+  },
+  "devDependencies": {
+    "connect": "*",
+    "browserify": "*",
+    "watchify": "*",
+    "uglify-js": "*",
+    "readdirp": "*"
+  },
+  "scripts": {
+	"prepare-resources": "node tools/resource-gen.js ./tools/resource-config.json",
+	"prepare": "npm run prepare-resources",
+	"debug": "npm run prepare && nw .",
+    "build-debug": "browserify app.js -d --s app > dist/main.js",
+    "build-min": "browserify app.js --s app | uglifyjs -c > dist/main.min.js",
+    "build-compiled": "java -jar tools/closurecompiler/compiler.jar --js dist/main.min.js --js_output_file dist/main-compiled.js",
+    "build": "npm run build-debug && npm run build-min && npm run build-compiled",
+    "pack": "del FinalBridge.nw | 7z a FinalBridge.nw . -tzip",
+    "play": "npm run build && npm run pack && nw FinalBridge.nw",
+    "watch": "watchify app.js --s app -o dist/main.js -v",
+    "test": "jasmine-node test",
+    "server": "node src/server/main.js",
+    "game": "nw ."
+  },
+  "window": {
+    "title": "PTP",
+    "width": 1366,
+    "height": 800,
+    "toolbar": false,
+    "frame": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+	"imageExtensions": [
+		"png", "jpg", "jpeg"
+	],
+	"fontExtensions": [
+	],
+	"soundExtensions": [
+        "mp3", "wav"
+	],
+	"folders": [
+		"media"
+	],
+	"spritesheets": [
+		{
+            "name": "./media/images/tileset.png",
+            "texture": "./media/images/tileset.png",
+            "width": 34,
+            "height": 34
+        }
+	]
+}
