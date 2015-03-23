@@ -1,5 +1,5 @@
 # ptpjs
-Prototype Platformer JS
+Prototype Platformer written in javascript.
 
 PTP JS is a platformer made with pixi.js and javascript. It can run in the browser or through node-webkit. Utilities for bundling resources are provided and require node.js to run.
 
